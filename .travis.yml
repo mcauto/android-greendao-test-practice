@@ -9,6 +9,7 @@ env:
     - ANDROID_BUILD_TOOLS_VERSION=28.0.3
     - ADB_INSTALL_TIMEOUT=20
     - ANDROID_ABI=armeabi-v7a
+    - ANDROID_TAG=google_apis
     - QEMU_AUDIO_DRV=none
 
 android:
@@ -42,7 +43,7 @@ before_install:
 
 script:
   - android list targets
-  - echo no | android create avd --force -n test -t "android-"$ANDROID_EMULATOR_LEVEL --abi $ANDROID_ABI
+  - echo no | android create avd --force -n test -t "android-"$ANDROID_EMULATOR_LEVEL --abi $ANDROID_ABI --tag $ANDROID_TAG
   - emulator -avd test -no-window &
   - mkdir -p build/reports
   - ./gradlew assembleDebugAndroidTest -PdisablePreDex --continue --stacktrace
