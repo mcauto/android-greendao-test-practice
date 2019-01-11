@@ -10,7 +10,7 @@ android:
   - extra-android-m2repository
   - extra-google-m2repository
 script:
-  - "./gradlew test"
+  - "ls"
 skip_cleanup: true
 branches:
   - master
